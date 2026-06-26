@@ -3,37 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Master Broadband | Chittagong</title>
+  <title>Master Broadband | High Speed Internet</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo"><span>Master Broadband</span></div>
-    <nav><a href="#packages">Packages</a><a href="#contact">Contact</a></nav>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    📡 Master Broadband - Trusted Internet Service Provider
+  </div>
+
+  <!-- Header -->
+  <header class="hero">
+    <h1>MASTER BROADBAND</h1>
+    <p>Fast • Stable • Unlimited Internet</p>
+    <button onclick="checkStatus()">Check Live Status</button>
   </header>
 
-  <section class="hero">
-    <h1>Fast & Reliable Internet</h1>
-    <p>Chittagong এর 1 নম্বর Broadband Service</p>
-    <a href="#packages" class="btn">View Packages</a>
+  <!-- Status Section -->
+  <section class="card">
+    <h2>Network Status</h2>
+    <div id="status">Click button to check status</div>
   </section>
 
-  <section id="packages" class="packages">
-    <h2>Our Packages</h2>
-    <div class="grid">
-      <div class="card"><h3>Basic 10 Mbps</h3><p class="price">৳500/Month</p><ul><li>Unlimited Data</li><li>24/7 Support</li></ul></div>
-      <div class="card popular"><h3>Premium 20 Mbps</h3><p class="price">৳800/Month</p><ul><li>Unlimited Data</li><li>Free Router</li><li>Priority Support</li></ul></div>
-      <div class="card"><h3>Ultra 50 Mbps</h3><p class="price">৳1200/Month</p><ul><li>Unlimited Data</li><li>Free Router</li><li>Static IP</li></ul></div>
-    </div>
+  <!-- Services -->
+  <section class="services">
+    <div class="box">⚡ High Speed Internet</div>
+    <div class="box">📞 24/7 Support</div>
+    <div class="box">🏠 Home Connection</div>
+    <div class="box">🏢 Corporate Package</div>
   </section>
 
-  <footer id="contact">
-    <h3>Contact Us</h3>
-    <p>Call/WhatsApp: <a href="tel:01404847201">01404847201</a></p>
-    <p>Location: Chittagong, BD</p>
-    <p>© 2026 Master Broadband. All Rights Reserved.</p>
+  <!-- Footer -->
+  <footer>
+    © 2026 Master Broadband | All Rights Reserved
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
