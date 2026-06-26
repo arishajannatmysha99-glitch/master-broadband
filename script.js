@@ -1,26 +1,26 @@
-‎/*====================================
+‎/*=================================================
 ‎MASTER BROADBAND NETWORK
-‎Premium Website V3
+‎Premium Website V4
 ‎script.js - Part 1
-‎====================================*/
+‎=================================================*/
 ‎
 ‎/*=========================
 ‎Sticky Header
 ‎=========================*/
 ‎
-‎window.addEventListener("scroll", function () {
-‎
 ‎const header = document.getElementById("header");
 ‎
-‎if (window.scrollY > 80) {
+‎window.addEventListener("scroll", () => {
 ‎
-‎header.classList.add("sticky");
+‎    if (window.scrollY > 80) {
 ‎
-‎} else {
+‎        header.classList.add("sticky");
 ‎
-‎header.classList.remove("sticky");
+‎    } else {
 ‎
-‎}
+‎        header.classList.remove("sticky");
+‎
+‎    }
 ‎
 ‎});
 ‎
@@ -30,23 +30,23 @@
 ‎
 ‎document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 ‎
-‎anchor.addEventListener("click", function (e) {
+‎    anchor.addEventListener("click", function(e){
 ‎
-‎e.preventDefault();
+‎        e.preventDefault();
 ‎
-‎const target = document.querySelector(this.getAttribute("href"));
+‎        const target = document.querySelector(this.getAttribute("href"));
 ‎
-‎if (target) {
+‎        if(target){
 ‎
-‎target.scrollIntoView({
+‎            target.scrollIntoView({
 ‎
-‎behavior: "smooth"
+‎                behavior:"smooth"
 ‎
-‎});
+‎            });
 ‎
-‎}
+‎        }
 ‎
-‎});
+‎    });
 ‎
 ‎});
 ‎
@@ -64,35 +64,41 @@
 ‎
 ‎"🟢 Customer Support Online",
 ‎
-‎"🟢 Network Performance Excellent"
+‎"🟢 High Speed Internet Active",
+‎
+‎"🟢 Welcome To Master Broadband"
 ‎
 ‎];
 ‎
 ‎let statusIndex = 0;
 ‎
-‎setInterval(() => {
+‎setInterval(()=>{
 ‎
 ‎statusIndex++;
 ‎
-‎if (statusIndex >= statusList.length) {
+‎if(statusIndex >= statusList.length){
 ‎
 ‎statusIndex = 0;
 ‎
 ‎}
 ‎
+‎if(statusBox){
+‎
 ‎statusBox.innerHTML = statusList[statusIndex];
 ‎
-‎}, 4000);
+‎}
+‎
+‎},4000);
 ‎
 ‎/*=========================
 ‎Fade Animation
 ‎=========================*/
 ‎
-‎const observer = new IntersectionObserver((entries) => {
+‎const observer = new IntersectionObserver((entries)=>{
 ‎
-‎entries.forEach((entry) => {
+‎entries.forEach((entry)=>{
 ‎
-‎if (entry.isIntersecting) {
+‎if(entry.isIntersecting){
 ‎
 ‎entry.target.classList.add("show");
 ‎
@@ -104,11 +110,13 @@
 ‎
 ‎document.querySelectorAll(
 ‎
-‎".about,.packages,.why-us,.statistics,.coverage,.notice,.reviews,.faq,.contact"
+‎".about,.packages,.why,.statistics,.coverage,.notice,.reviews,.faq,.contact"
 ‎
-‎).forEach((el) => {
+‎).forEach((section)=>{
 ‎
-‎observer.observe(el);
+‎section.classList.add("fade-up");
+‎
+‎observer.observe(section);
 ‎
 ‎});
 ‎
@@ -116,53 +124,50 @@
 ‎Console Message
 ‎=========================*/
 ‎
-‎console.log(
-‎
-‎"Master Broadband Network Website Loaded Successfully"
-‎
-‎);
-‎/*====================================
+‎console.log("Master Broadband Network V4 Loaded Successfully");
+‎/*=================================================
+‎MASTER BROADBAND NETWORK
+‎Premium Website V4
 ‎script.js - Part 2
-‎====================================*/
+‎=================================================*/
 ‎
 ‎/*=========================
-‎Animated Counter
+‎Counter Animation
 ‎=========================*/
 ‎
 ‎const counters = document.querySelectorAll(".stat-box h2");
 ‎
-‎const counterObserver = new IntersectionObserver((entries) => {
+‎const counterObserver = new IntersectionObserver((entries)=>{
 ‎
-‎entries.forEach((entry) => {
+‎entries.forEach((entry)=>{
 ‎
-‎if (!entry.isIntersecting) return;
+‎if(!entry.isIntersecting) return;
 ‎
 ‎const counter = entry.target;
-‎const targetText = counter.innerText;
 ‎
-‎const target = parseFloat(targetText.replace(/[^0-9.]/g, "")) || 0;
-‎const suffix = targetText.replace(/[0-9.]/g, "");
+‎const target = parseInt(counter.getAttribute("data-count")) || 0;
 ‎
 ‎let count = 0;
-‎const speed = target / 100 || 1;
 ‎
-‎const updateCounter = () => {
+‎const speed = Math.max(1, Math.ceil(target / 100));
+‎
+‎function updateCounter(){
 ‎
 ‎count += speed;
 ‎
-‎if (count < target) {
+‎if(count < target){
 ‎
-‎counter.innerText = Math.floor(count) + suffix;
+‎counter.innerText = count + "+";
 ‎
 ‎requestAnimationFrame(updateCounter);
 ‎
-‎} else {
+‎}else{
 ‎
-‎counter.innerText = targetText;
+‎counter.innerText = target + "+";
 ‎
 ‎}
 ‎
-‎};
+‎}
 ‎
 ‎updateCounter();
 ‎
@@ -172,7 +177,7 @@
 ‎
 ‎});
 ‎
-‎counters.forEach((counter) => {
+‎counters.forEach((counter)=>{
 ‎
 ‎counterObserver.observe(counter);
 ‎
@@ -182,15 +187,15 @@
 ‎Back To Top Button
 ‎=========================*/
 ‎
-‎const topBtn = document.createElement("button");
+‎const topButton = document.createElement("button");
 ‎
-‎topBtn.innerHTML = "↑";
+‎topButton.id = "topButton";
 ‎
-‎topBtn.id = "topButton";
+‎topButton.innerHTML = "↑";
 ‎
-‎document.body.appendChild(topBtn);
+‎document.body.appendChild(topButton);
 ‎
-‎topBtn.style.cssText = `
+‎topButton.style.cssText = `
 ‎position:fixed;
 ‎left:20px;
 ‎bottom:20px;
@@ -204,24 +209,25 @@
 ‎cursor:pointer;
 ‎display:none;
 ‎z-index:9999;
-‎box-shadow:0 8px 20px rgba(0,0,0,.2);
+‎box-shadow:0 10px 20px rgba(0,0,0,.2);
+‎transition:.3s;
 ‎`;
 ‎
-‎window.addEventListener("scroll", () => {
+‎window.addEventListener("scroll",()=>{
 ‎
-‎if (window.scrollY > 300) {
+‎if(window.scrollY>300){
 ‎
-‎topBtn.style.display = "block";
+‎topButton.style.display="block";
 ‎
-‎} else {
+‎}else{
 ‎
-‎topBtn.style.display = "none";
+‎topButton.style.display="none";
 ‎
 ‎}
 ‎
 ‎});
 ‎
-‎topBtn.addEventListener("click", () => {
+‎topButton.addEventListener("click",()=>{
 ‎
 ‎window.scrollTo({
 ‎
@@ -234,174 +240,130 @@
 ‎});
 ‎
 ‎/*=========================
-‎Contact Form Validation
+‎Contact Form
 ‎=========================*/
 ‎
-‎const form = document.querySelector("form");
+‎const contactForm = document.querySelector(".contact-form");
 ‎
-‎if(form){
+‎if(contactForm){
 ‎
-‎form.addEventListener("submit",(e)=>{
+‎contactForm.addEventListener("submit",(e)=>{
 ‎
 ‎e.preventDefault();
 ‎
-‎alert("Thank you! Your message has been received.");
+‎alert("✅ Thank you for contacting Master Broadband!");
 ‎
-‎form.reset();
+‎contactForm.reset();
 ‎
 ‎});
 ‎
 ‎}
 ‎
 ‎/*=========================
-‎Package Hover Effect
+‎Package Card Effect
 ‎=========================*/
 ‎
 ‎document.querySelectorAll(".package-card").forEach((card)=>{
 ‎
 ‎card.addEventListener("mouseenter",()=>{
 ‎
-‎card.style.transform="translateY(-15px) scale(1.03)";
+‎card.style.transform="translateY(-12px) scale(1.03)";
 ‎
 ‎});
 ‎
 ‎card.addEventListener("mouseleave",()=>{
 ‎
-‎card.style.transform="";
+‎card.style.transform="translateY(0) scale(1)";
 ‎
 ‎});
 ‎
 ‎});
-‎
-‎/*=========================
-‎Page Loaded
-‎=========================*/
-‎
-‎window.addEventListener("load",()=>{
-‎
-‎document.body.style.opacity="1";
-‎
-‎console.log("Website Ready");
-‎
-‎});
-‎/*====================================
-‎script.js - Part 3 (Final)
-‎====================================*/
-‎
-‎/*=========================
-‎Review Auto Highlight
-‎=========================*/
-‎
-‎const reviews = document.querySelectorAll(".review-card");
-‎
-‎let reviewIndex = 0;
-‎
-‎function highlightReview(){
-‎
-‎reviews.forEach((review)=>{
-‎
-‎review.classList.remove("active-review");
-‎
-‎});
-‎
-‎if(reviews.length>0){
-‎
-‎reviews[reviewIndex].classList.add("active-review");
-‎
-‎reviewIndex++;
-‎
-‎if(reviewIndex>=reviews.length){
-‎
-‎reviewIndex=0;
-‎
-‎}
-‎
-‎}
-‎
-‎}
-‎
-‎setInterval(highlightReview,3000);
-‎
-‎highlightReview();
-‎
-‎/*=========================
-‎Notice Animation
-‎=========================*/
-‎
-‎const noticeBox=document.querySelector(".notice-box");
-‎
-‎if(noticeBox){
-‎
-‎let opacity=1;
-‎
-‎setInterval(()=>{
-‎
-‎opacity=(opacity===1)?0.7:1;
-‎
-‎noticeBox.style.opacity=opacity;
-‎
-‎},1000);
-‎
-‎}
 ‎
 ‎/*=========================
 ‎Hero Button Animation
 ‎=========================*/
 ‎
-‎const heroButtons=document.querySelectorAll(".hero-buttons a");
-‎
-‎heroButtons.forEach((btn)=>{
-‎
-‎btn.addEventListener("mouseenter",()=>{
-‎
-‎btn.style.transform="scale(1.08)";
-‎
-‎});
-‎
-‎btn.addEventListener("mouseleave",()=>{
-‎
-‎btn.style.transform="scale(1)";
-‎
-‎});
-‎
-‎});
+‎document.querySelectorAll(".hero-buttons a").forEach((btn)=>
+‎/*=================================================
+‎MASTER BROADBAND NETWORK
+‎Premium Website V4
+‎script.js - Part 3 (Final)
+‎=================================================*/
 ‎
 ‎/*=========================
 ‎Scroll Progress Bar
 ‎=========================*/
 ‎
-‎const progress=document.createElement("div");
+‎const progressBar = document.createElement("div");
 ‎
-‎progress.id="scrollProgress";
+‎progressBar.id = "scroll-progress";
 ‎
-‎progress.style.cssText=`
+‎progressBar.style.cssText = `
 ‎position:fixed;
 ‎top:0;
 ‎left:0;
-‎height:4px;
 ‎width:0%;
+‎height:4px;
 ‎background:#25D366;
 ‎z-index:99999;
 ‎transition:width .2s linear;
 ‎`;
 ‎
-‎document.body.appendChild(progress);
+‎document.body.appendChild(progressBar);
 ‎
 ‎window.addEventListener("scroll",()=>{
 ‎
-‎const totalHeight=document.documentElement.scrollHeight-window.innerHeight;
+‎const scrollTop = document.documentElement.scrollTop;
 ‎
-‎const progressWidth=(window.pageYOffset/totalHeight)*100;
+‎const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 ‎
-‎progress.style.width=progressWidth+"%";
+‎const percent = (scrollTop / scrollHeight) * 100;
+‎
+‎progressBar.style.width = percent + "%";
 ‎
 ‎});
 ‎
 ‎/*=========================
-‎Image Hover Effect
+‎Review Highlight
 ‎=========================*/
 ‎
-‎document.querySelectorAll("img").forEach((img)=>{
+‎const reviewCards = document.querySelectorAll(".review-card");
+‎
+‎let review = 0;
+‎
+‎function reviewAnimation(){
+‎
+‎reviewCards.forEach(card=>{
+‎
+‎card.classList.remove("active-review");
+‎
+‎});
+‎
+‎if(reviewCards.length){
+‎
+‎reviewCards[review].classList.add("active-review");
+‎
+‎review++;
+‎
+‎if(review >= reviewCards.length){
+‎
+‎review = 0;
+‎
+‎}
+‎
+‎}
+‎
+‎}
+‎
+‎setInterval(reviewAnimation,3000);
+‎
+‎reviewAnimation();
+‎
+‎/*=========================
+‎Image Hover Animation
+‎=========================*/
+‎
+‎document.querySelectorAll("img").forEach(img=>{
 ‎
 ‎img.addEventListener("mouseenter",()=>{
 ‎
@@ -420,34 +382,39 @@
 ‎});
 ‎
 ‎/*=========================
-‎Footer Year
+‎Footer Copyright Year
 ‎=========================*/
 ‎
-‎const footer=document.querySelector("footer");
+‎const footer = document.querySelector("footer");
 ‎
 ‎if(footer){
 ‎
-‎const year=new Date().getFullYear();
-‎
-‎footer.innerHTML=footer.innerHTML.replace("2026",year);
+‎footer.innerHTML = footer.innerHTML.replace("2026",new Date().getFullYear());
 ‎
 ‎}
 ‎
 ‎/*=========================
-‎Developer Console
+‎Console Branding
 ‎=========================*/
 ‎
 ‎console.log("%cMASTER BROADBAND NETWORK",
-‎"color:#0057d9;font-size:22px;font-weight:bold;");
+‎"font-size:24px;color:#0057d9;font-weight:bold;");
 ‎
-‎console.log("%cWebsite Version : Premium V3",
-‎"color:green;font-size:14px;");
+‎console.log("%cFast • Reliable • Connected",
+‎"font-size:16px;color:#25D366;");
 ‎
-‎console.log("%cStatus : Running Successfully",
-‎"color:#ff9800;font-size:14px;");
+‎console.log("%cWebsite Version : V4 Premium",
+‎"font-size:14px;color:#ff9800;");
 ‎
-‎console.log("%cDeveloped with ❤️",
-‎"color:red;font-size:14px;");
+‎/*=========================
+‎Website Loaded
+‎=========================*/
+‎
+‎window.addEventListener("load",()=>{
+‎
+‎console.log("Master Broadband Website Loaded Successfully.");
+‎
+‎});
 ‎
 ‎/*=========================
 ‎End of File
