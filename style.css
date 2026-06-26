@@ -1,1 +1,4 @@
-
+console.log("Master Broadband Site Loaded");
+document.querySelector('.btn').addEventListener('click', () => {
+  alert('Package দেখার জন্য ধন্যবাদ! কল করুন: 01404847201');
+});
