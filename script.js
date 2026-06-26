@@ -1,78 +1,12 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: white;
-}
-
-/* Top Bar */
-.topbar {
-  background: #00aaff;
-  text-align: center;
-  padding: 8px;
-  font-size: 14px;
-}
-
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #001f3f, #0077ff);
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: 40px;
-}
-
-.hero p {
-  margin-top: 10px;
-  opacity: 0.9;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  background: white;
-  color: #0077ff;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Card */
-.card {
-  margin: 20px;
-  padding: 20px;
-  background: #111a2e;
-  border-radius: 10px;
-  text-align: center;
-}
-
-#status {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-/* Services */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.box {
-  background: #16213e;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #000;
-body
+function checkStatus() { 
+  const status = document.getElementById("status"); 
+  if (navigator.onLine) { 
+    status.innerHTML = "🟢 Online - Network is Stable"; 
+    status.style.color = "#00ff88"; 
+  } else { 
+    status.innerHTML = "🔴 Offline - Connection Lost"; 
+    status.style.color = "red"; 
+  } 
+} 
+window.addEventListener("online", checkStatus); 
+window.addEventListener("offline", checkStatus);
