@@ -9,4 +9,5 @@ function checkStatus() {
   } 
 } 
 window.addEventListener("online", checkStatus); 
-window.addEventListener("offline", checkStatus);
+window.addEventListener("offline", checkStatus); 
+checkStatus();
