@@ -650,3 +650,16 @@ body{
 .add-btn:hover{
     background:#003fa5;
 }
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
